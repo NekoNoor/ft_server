@@ -6,7 +6,7 @@
 #    By: nschat <nschat@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/02/26 16:19:05 by nschat        #+#    #+#                  #
-#    Updated: 2020/02/28 17:19:10 by nschat        ########   odam.nl          #
+#    Updated: 2020/02/28 18:00:57 by nschat        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,9 @@ RUN apt-get update && apt-get install -y \
 
 # Set workdir to the right location
 WORKDIR /var/www/html
+
+# Write PHP config
+COPY srcs/.user.ini .
 
 # Download phpmyadmin
 RUN wget https://files.phpmyadmin.net/phpMyAdmin/5.0.1/phpMyAdmin-5.0.1-english.tar.gz && \
