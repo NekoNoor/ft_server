@@ -6,7 +6,7 @@
 #    By: nschat <nschat@student.codam.nl>             +#+                      #
 #                                                    +#+                       #
 #    Created: 2020/02/26 16:19:05 by nschat        #+#    #+#                  #
-#    Updated: 2020/02/28 17:03:30 by nschat        ########   odam.nl          #
+#    Updated: 2020/02/28 17:19:10 by nschat        ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,8 @@ COPY srcs/nginx.conf /etc/nginx/sites-available/localhost
 RUN chmod -R 755 * && \
 	chown -R www-data:www-data * && \
 	ln -s /etc/nginx/sites-available/localhost /etc/nginx/sites-enabled/localhost && \
-	rm /etc/nginx/sites-enabled/default
+	rm /etc/nginx/sites-enabled/default && \
+	openssl req -x509 -nodes -days 365 -newkey rsa:2048 -subj '/C=NL/ST=Noord-Holland/L=Amsterdam/O=Codam/CN=123' -keyout /etc/ssl/certs/localhost.key -out /etc/ssl/certs/localhost.crt
 
 # Copy startup script
 COPY srcs/start.sh .
